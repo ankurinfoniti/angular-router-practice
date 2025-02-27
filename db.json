@@ -1,3 +1,59 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "2827",
+      "email": "test@gmail.com",
+      "password": "12345"
+    }
+  ],
+  "courses": [
+    {
+      "id": "101",
+      "title": "Mastering the Art of Digital Communication",
+      "author": "John Doe",
+      "durations": "5h",
+      "totalStudent": "1400",
+      "image": "/images/item1.jpg"
+    },
+    {
+      "id": "102",
+      "title": "Web Wizardry 101: Mastering the Internet",
+      "author": "James Willam",
+      "durations": "20h",
+      "totalStudent": "100",
+      "image": "/images/item2.jpg"
+    },
+    {
+      "id": "103",
+      "title": "E-Learning Essentials: A Comprehensive Guide",
+      "author": "James Willam",
+      "durations": "3h",
+      "totalStudent": "320",
+      "image": "/images/item3.jpg"
+    },
+    {
+      "id": "104",
+      "title": "CyberClass 101: A Guide to Online Education",
+      "author": "James Willam",
+      "durations": "6h",
+      "totalStudent": "220",
+      "image": "/images/item4.jpg"
+    },
+    {
+      "id": "105",
+      "title": "Mastering the Art of Digital Communication",
+      "author": "James Willam",
+      "durations": "11h",
+      "totalStudent": "1720",
+      "image": "/images/item5.jpg"
+    },
+    {
+      "id": "106",
+      "title": "Web Wizardry 101: Mastering the Internet",
+      "author": "James Willam",
+      "durations": "16h",
+      "totalStudent": "1500",
+      "image": "/images/item6.jpg"
+    }
+  ]
 }
