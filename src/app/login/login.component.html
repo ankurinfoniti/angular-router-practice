@@ -11,6 +11,15 @@
             <div>Invalid email or password.</div>
           </div>
         }
+
+        @if (errorMessage) {
+          <div
+            class="alert alert-danger d-flex align-items-center"
+            role="alert"
+          >
+            <div>{{ errorMessage }}</div>
+          </div>
+        }
         <form #form="ngForm" (ngSubmit)="onSubmit(form)">
           <div class="mb-3">
             <label for="email" class="form-label"> Email </label>

@@ -17,9 +17,12 @@ export class LoginComponent {
   authService = inject(AuthService);
 
   isInvalidUser = false;
+  errorMessage = '';
 
   onSubmit(form: NgForm) {
     this.isInvalidUser = false;
+    this.errorMessage = '';
+
     if (form.valid) {
       const email = form.value.email;
       const password = form.value.password;
@@ -35,7 +38,7 @@ export class LoginComponent {
             this.isInvalidUser = true;
           },
           error: (errorMessage) => {
-            console.log(errorMessage);
+            this.errorMessage = errorMessage;
           },
         });
     } else {

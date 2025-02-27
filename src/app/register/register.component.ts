@@ -44,7 +44,6 @@ export class RegisterComponent {
           error: (error) => {
             this.errorMessage = error;
             this.successMessage = '';
-            console.error(error);
           },
           complete: () => {
             form.resetForm();
