@@ -4,7 +4,7 @@ import {
   HttpParams,
 } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, map, throwError } from 'rxjs';
+import { catchError, map, Subject, throwError } from 'rxjs';
 
 import { User } from '../models/user.interface';
 
@@ -16,6 +16,8 @@ const API_URL = 'http://localhost:3000/';
 export class AuthService {
   http = inject(HttpClient);
 
+  isUserLoggedIn = new Subject<boolean>();
+
   login(email: string, password: string) {
     const params = new HttpParams()
       .set('email', email)
@@ -25,6 +27,7 @@ export class AuthService {
       map((users) => {
         if (users.length > 0) {
           sessionStorage.setItem('user', JSON.stringify(users[0]));
+          this.isUserLoggedIn.next(true);
           return users[0];
         }
         return null;
@@ -39,6 +42,7 @@ export class AuthService {
 
   logout() {
     sessionStorage.removeItem('user');
+    this.isUserLoggedIn.next(false);
   }
 
   create(user: User) {

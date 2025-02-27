@@ -4,12 +4,20 @@
       <a class="navbar-brand d-flex align-items-center">
         <strong>Course Dashboard</strong>
       </a>
-      <a class="d-flex align-items-center text-decoration-none">
-        <strong>Login</strong>
-      </a>
-      <a class="d-flex align-items-center text-decoration-none">
-        <strong>Logout</strong>
-      </a>
+
+      @if (isLogin) {
+        <a
+          class="d-flex align-items-center text-decoration-none"
+          role="button"
+          (click)="logout()"
+        >
+          <strong>Logout</strong>
+        </a>
+      } @else {
+        <a class="d-flex align-items-center text-decoration-none" routerLink="">
+          <strong>Login</strong>
+        </a>
+      }
     </div>
   </div>
 </header>
