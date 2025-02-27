@@ -3,20 +3,79 @@
     <div class="col-lg-6 col-md-8 mx-auto">
       <h4 class="fw-light text-center">Register Page</h4>
       <div class="lead text-body-secondary">
-        <form>
+        <form
+          #form="ngForm"
+          [passwordMatch]="['password', 'cpassword']"
+          (ngSubmit)="onSubmit(form)"
+        >
           <div class="mb-3">
             <label for="email" class="form-label"> Email </label>
-            <input type="email" class="form-control" id="email" />
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              required
+              email
+              ngModel
+              #email="ngModel"
+            />
+            @if (email.invalid && (email.touched || email.dirty)) {
+              @if (email.errors?.["required"]) {
+                <div class="text-danger">Email is required.</div>
+              }
+
+              @if (email.errors?.["email"]) {
+                <div class="text-danger">
+                  Please enter a valid email address.
+                </div>
+              }
+            }
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" />
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              required
+              ngModel
+              #password="ngModel"
+            />
+            @if (password.invalid && (password.touched || password.dirty)) {
+              @if (password.errors?.["required"]) {
+                <div class="text-danger">Password is required.</div>
+              }
+            }
           </div>
           <div class="mb-3">
             <label for="cpassword" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="cpassword" />
+            <input
+              type="password"
+              class="form-control"
+              id="cpassword"
+              name="cpassword"
+              required
+              ngModel
+              #cpassword="ngModel"
+            />
+            @if (cpassword.invalid && (cpassword.touched || cpassword.dirty)) {
+              @if (cpassword.errors?.["required"]) {
+                <div class="text-danger">Confirm Password is required.</div>
+              }
+              @if (cpassword.errors?.["passwordMismatch"]) {
+                <div class="text-danger">Passwords do not match.</div>
+              }
+            }
           </div>
-          <button type="submit" class="btn btn-primary">Register</button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+          >
+            Register
+          </button>
         </form>
       </div>
       <p>
