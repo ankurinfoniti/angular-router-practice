@@ -3,6 +3,24 @@
     <div class="col-lg-6 col-md-8 mx-auto">
       <h4 class="fw-light text-center">Register Page</h4>
       <div class="lead text-body-secondary">
+        @if (successMessage) {
+          <div
+            class="alert alert-success d-flex align-items-center"
+            role="alert"
+          >
+            <div>{{ successMessage }}</div>
+          </div>
+        }
+
+        @if (errorMessage) {
+          <div
+            class="alert alert-danger d-flex align-items-center"
+            role="alert"
+          >
+            <div>{{ errorMessage }}</div>
+          </div>
+        }
+
         <form
           #form="ngForm"
           [passwordMatch]="['password', 'cpassword']"

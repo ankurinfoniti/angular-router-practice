@@ -17,7 +17,13 @@ export class RegisterComponent {
   router = inject(Router);
   authService = inject(AuthService);
 
+  successMessage = '';
+  errorMessage = '';
+
   onSubmit(form: NgForm) {
+    this.errorMessage = '';
+    this.successMessage = '';
+
     if (form.valid) {
       const user = {
         email: form.value.email,
@@ -29,12 +35,19 @@ export class RegisterComponent {
         .pipe(takeUntilDestroyed(this.destroyRef))
         .subscribe({
           next: () => {
-            this.router.navigate(['/courses']);
+            this.successMessage = 'User created successfully!';
+            this.errorMessage = '';
+            setTimeout(() => {
+              this.router.navigate(['/courses']);
+            }, 2000);
           },
           error: (error) => {
+            this.errorMessage = error;
+            this.successMessage = '';
             console.error(error);
           },
           complete: () => {
+            console.log('here');
             form.resetForm();
           },
         });
