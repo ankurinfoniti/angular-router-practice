@@ -47,7 +47,6 @@ export class RegisterComponent {
             console.error(error);
           },
           complete: () => {
-            console.log('here');
             form.resetForm();
           },
         });
