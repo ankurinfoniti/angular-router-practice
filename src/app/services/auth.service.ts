@@ -26,14 +26,18 @@ export class AuthService {
     return this.http.get<User[]>(`${API_URL}users`, { params: params }).pipe(
       map((users) => {
         if (users.length > 0) {
-          sessionStorage.setItem('user', JSON.stringify(users[0]));
-          this.isUserLoggedIn.next(true);
+          this.loggedInUser(users[0]);
           return users[0];
         }
         return null;
       }),
       catchError(this.handleError),
     );
+  }
+
+  loggedInUser(user: User) {
+    sessionStorage.setItem('user', JSON.stringify(user));
+    this.isUserLoggedIn.next(true);
   }
 
   isLoggedIn() {

@@ -34,9 +34,11 @@ export class RegisterComponent {
         .create(user)
         .pipe(takeUntilDestroyed(this.destroyRef))
         .subscribe({
-          next: () => {
+          next: (resData) => {
             this.successMessage = 'User created successfully!';
             this.errorMessage = '';
+            // logged in user after successful creation
+            this.authService.loggedInUser(resData);
             setTimeout(() => {
               this.router.navigate(['/courses']);
             }, 2000);
