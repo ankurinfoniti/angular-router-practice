@@ -4,7 +4,7 @@ import {
   HttpParams,
 } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, map, Subject, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, Subject, throwError } from 'rxjs';
 
 import { User } from '../models/user.interface';
 
@@ -16,7 +16,7 @@ const API_URL = 'http://localhost:3000/';
 export class AuthService {
   http = inject(HttpClient);
 
-  isUserLoggedIn = new Subject<boolean>();
+  isUserLoggedIn = new BehaviorSubject<boolean>(this.isLoggedIn());
 
   login(email: string, password: string) {
     const params = new HttpParams()
