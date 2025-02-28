@@ -6,6 +6,7 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { authGuard } from './guards/auth.guard';
+import { courseGuard } from './guards/course.guard';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,7 @@ export const routes: Routes = [
   {
     path: 'courses/:id',
     component: CourseDetailComponent,
+    canActivate: [courseGuard],
   },
   {
     path: '**',
